@@ -16,7 +16,7 @@ const routes = [
     component: CoachesList,
   },
   {
-    path: "/coaches:id",
+    path: "/coaches/:id",
     component: CoachDetail,
     children: [
       {
