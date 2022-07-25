@@ -10,7 +10,7 @@
     <base-card>
       <header>
         <h2>Interested? Reach out now!</h2>
-        <base-button link :to="contactLink">Contact</base-button>
+        <base-button v-if="buttonIsVisible" link :to="contactLink">Contact</base-button>
       </header>
       <router-view></router-view>
     </base-card>
@@ -38,6 +38,9 @@ export default {
       return this.selectedCoach.firstName + " " + this.selectedCoach.lastName;
     },
     contactLink() {
+      if (this.$route.params) {
+        return this.$route.path + "/contact";
+      }
       return this.$route.path + "/" + this.id + "/contact";
     },
     areas() {
@@ -48,6 +51,12 @@ export default {
     },
     description() {
       return this.selectedCoach.description;
+    },
+    buttonIsVisible() {
+      if (this.$route.path.includes("contact")) {
+        return false;
+      }
+      return true;
     },
   },
   created() {
