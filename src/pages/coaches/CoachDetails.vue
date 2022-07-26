@@ -3,6 +3,7 @@
     <section>
       <base-card>
         <h2>{{ fullName }}</h2>
+        <h3>{{ description }}</h3>
         <h3>${{ rate }}/hour</h3>
       </base-card>
     </section>
@@ -62,6 +63,7 @@ export default {
     },
   },
   created() {
+    console.log(this.$route);
     this.selectedCoach = this.$store.getters["coaches/coaches"].find((coach) => {
       return coach.id === this.id;
     });

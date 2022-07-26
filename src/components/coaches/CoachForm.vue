@@ -8,8 +8,8 @@
         v-model.trim="firstName.val"
         @blur="clearValidity('firstName')"
       />
+      <p v-if="!firstName.isValid">First Name must not be empty!</p>
     </div>
-    <p v-if="!firstName.isValid">First Name must not be empty!</p>
 
     <div class="form-control" :class="{ invalid: !lastName.isValid }">
       <label for="lastName">Last Name</label>
@@ -19,8 +19,8 @@
         v-model.trim="lastName.val"
         @blur="clearValidity('lastName')"
       />
+      <p v-if="!lastName.isValid">Last Name must not be empty!</p>
     </div>
-    <p v-if="!lastName.isValid">Last Name must not be empty!</p>
 
     <div class="form-control" :class="{ invalid: !description.isValid }">
       <label for="description">Description</label>
@@ -30,14 +30,14 @@
         v-model.trim="description.val"
         @blur="clearValidity('description')"
       ></textarea>
+      <p v-if="!description.isValid">Description must not be empty!</p>
     </div>
-    <p v-if="!description.isValid">Description must not be empty!</p>
 
     <div class="form-control" :class="{ invalid: !rate.isValid }">
       <label for="rate">Hourly Rate</label>
       <input type="number" id="rate" v-model.number="rate.val" @blur="clearValidity('rate')" />
+      <p v-if="!rate.isValid">Rate must be greater than zero!</p>
     </div>
-    <p v-if="!rate.isValid">Rate must greater than zero!</p>
 
     <div class="form-control" :class="{ invalid: !areas.isValid }">
       <h3>Areas of Expertise</h3>
@@ -73,11 +73,10 @@
         />
         <label for="career">Career Advisory</label>
       </div>
-      <p v-if="!areas.isValid">At least one area of expertise must be selected!</p>
+      <p v-if="!areas.isValid">At least one area of expertise must be selected.</p>
     </div>
 
-    <p v-if="!formIsValid">Please fix the errors above and submit again!</p>
-
+    <p v-if="!formIsValid">Please fix the errors above and submit again.</p>
     <base-button>Register</base-button>
   </form>
 </template>
@@ -157,8 +156,6 @@ export default {
         areas: this.areas.val,
       };
       this.$emit("save-data", formData);
-
-      console.log(formData);
     },
   },
 };

@@ -17,6 +17,9 @@ export default {
       }
     );
 
+    if (!response.ok) {
+      console.log("Oops, something went wrong");
+    }
     context.commit("registerCoach", { ...coachData, id: userId });
   },
 
