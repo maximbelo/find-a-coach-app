@@ -8,7 +8,7 @@
 
       <div class="form-control">
         <label for="password">Password:</label>
-        <input type="password" id="password" v-model.trim="email" />
+        <input type="password" id="password" v-model.trim="password" />
       </div>
 
       <p v-if="!formIsValid">
@@ -39,6 +39,15 @@ export default {
       if (this.email === "" || !this.email.includes("@") || this.password.length < 6) {
         this.formIsValid = false;
         return;
+      }
+
+      if (this.mode === "login") {
+        //...
+      } else {
+        this.$store.dispatch("signup", {
+          email: this.email,
+          password: this.password,
+        });
       }
     },
     switchAuthMode() {
