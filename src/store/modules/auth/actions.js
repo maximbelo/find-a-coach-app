@@ -12,7 +12,7 @@ export default {
       }
     );
 
-    const responseData = response.json();
+    const responseData = await response.json();
 
     if (!response.ok) {
       const error = new Error(responseData.message || "Failed to authenticate. Please try again.");
@@ -41,7 +41,7 @@ export default {
       }
     );
 
-    const responseData = response.json();
+    const responseData = await response.json();
 
     if (!response.ok) {
       const error = new Error(responseData.message || "Failed to authenticate. Please try again.");
