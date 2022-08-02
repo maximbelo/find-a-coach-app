@@ -15,6 +15,20 @@ export default {
     TheHeader,
   },
 
+  computed: {
+    didAutoLogout() {
+      return this.$store.getters.didAutoLogout;
+    },
+  },
+
+  watch: {
+    didAutoLogout(currVal, oldVal) {
+      if (currVal && currVal !== oldVal) {
+        this.$router.replace("/coaches");
+      }
+    },
+  },
+
   created() {
     this.$store.dispatch("tryLogin");
   },
